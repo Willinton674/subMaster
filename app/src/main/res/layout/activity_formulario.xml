@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Formulario"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="@string/servi">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+
+        <!-- Botón 1 -->
+        <Button
+            android:id="@+id/btn_lista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listas"
+            android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/blue"
+            android:elevation="4dp">
+
+        </Button>
+
+        <!-- Botón central (agregar) -->
+        <Button
+            android:id="@+id/btn_agregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar"
+            android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/blue"
+            android:elevation="4dp">
+
+        </Button>
+
+        <!-- Botón 3 -->
+        <Button
+            android:id="@+id/btn_estadistica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esdisticas"
+            android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/blue"
+            android:elevation="4dp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de Servicio"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Nombre de Servicio -->
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E0E0E0"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Fecha adquisición -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha adquisición"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/txtFecha_A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E0E0E0"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Fecha de cobro -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de cobro"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/txtFecha_B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E0E0E0"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Frecuencia de cobro -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frecuencia de cobro"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/txtCobro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E0E0E0"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Tipo de débito -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo de débito"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <Spinner
+        android:id="@+id/TipoDebito"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Tipo de servicio -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo de Servicio"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/radioStandard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Standard" />
+
+        <RadioButton
+            android:id="@+id/radioPremium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Premium" />
+
+        <RadioButton
+            android:id="@+id/radioVIP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIP" />
+
+        <RadioButton
+            android:id="@+id/radioOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other" />
+    </RadioGroup>
+
+    <!-- Últimos 4 dígitos -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Últimos 4 dígitos de tarjeta débito/crédito"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/txtTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="XXXX"
+        android:backgroundTint="#E0E0E0"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"
+        android:inputType="number" />
+
+    <!-- Botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnAgregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/blue" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:backgroundTint="@color/blue"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
