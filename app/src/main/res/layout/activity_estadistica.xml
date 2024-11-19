@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".Activity_Formulario"
+    android:orientation="vertical">
 
     <!-- Texto principal -->
     <LinearLayout
@@ -34,6 +33,17 @@
         android:gravity="center"
         android:layout_marginBottom="16dp">
 
+        <!-- Botón Lista -->
+        <Button
+            android:id="@+id/btn_lista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lista"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="@color/blue"
+            android:elevation="4dp"
+            android:contentDescription="Lista de elementos" />
+
         <!-- Botón Agregar -->
         <Button
             android:id="@+id/btn_agregar"
@@ -44,24 +54,7 @@
             android:backgroundTint="@color/blue"
             android:elevation="4dp"
             android:contentDescription="Agregar nuevo elemento" />
-
-        <!-- Botón Estadísticas -->
-        <Button
-            android:id="@+id/btn_estadistica"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Estadísticas"
-            android:layout_marginHorizontal="8dp"
-            android:backgroundTint="@color/blue"
-            android:elevation="4dp"
-            android:contentDescription="Ver estadísticas" />
     </LinearLayout>
 
-    <!-- Lista -->
-    <ListView
-        android:id="@+id/lista_elementos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:dividerHeight="1dp" />
+
 </LinearLayout>

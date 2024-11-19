@@ -8,62 +8,52 @@
     tools:context=".Activity_Formulario"
     android:orientation="vertical">
 
+    <!-- Texto principal -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="25dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:text="@string/servi">
-        </TextView>
-
+            android:textSize="20sp"
+            android:text="@string/app_name"
+            android:textColor="@color/black" />
     </LinearLayout>
 
+    <!-- Botones principales -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
 
-
-        <!-- Botón 1 -->
+        <!-- Botón Lista -->
         <Button
             android:id="@+id/btn_lista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Listas"
-            android:layout_marginHorizontal="16dp"
+            android:text="Lista"
+            android:layout_marginHorizontal="8dp"
             android:backgroundTint="@color/blue"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            android:contentDescription="Lista de elementos" />
 
-        </Button>
-
-        <!-- Botón central (agregar) -->
-        <Button
-            android:id="@+id/btn_agregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Agregar"
-            android:layout_marginHorizontal="16dp"
-            android:backgroundTint="@color/blue"
-            android:elevation="4dp">
-
-        </Button>
-
-        <!-- Botón 3 -->
+        <!-- Botón Estadísticas -->
         <Button
             android:id="@+id/btn_estadistica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Esdisticas"
-            android:layout_marginHorizontal="16dp"
+            android:text="Estadísticas"
+            android:layout_marginHorizontal="8dp"
             android:backgroundTint="@color/blue"
-            android:elevation="4dp" />
-
+            android:elevation="4dp"
+            android:contentDescription="Ver estadísticas" />
     </LinearLayout>
 
 

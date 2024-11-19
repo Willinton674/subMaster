@@ -1,6 +1,8 @@
 package com.example.submaster
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +13,23 @@ class Activity_Formulario : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_formulario)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Configuración el botones
+        val btnLista = findViewById<Button>(R.id.btn_lista)
+        val btnEstadistica = findViewById<Button>(R.id.btn_estadistica)
+
+        // Configurar el evento de clic del botón "Lista"
+        btnLista.setOnClickListener {
+            // Abre MainActivity
+            val intent = Intent(this@Activity_Formulario, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Configurar el evento de clic del botón "Estadisticas"
+        btnEstadistica.setOnClickListener {
+            // Abre Activity_Estadistica
+            val intent = Intent(this@Activity_Formulario, Activity_Estadistica::class.java)
+            startActivity(intent)
         }
     }
 }

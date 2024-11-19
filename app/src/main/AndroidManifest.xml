@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SubMaster"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_Estadistica"
+            android:exported="false" />
+        <activity
             android:name=".Activity_Formulario"
             android:exported="false" />
         <activity
