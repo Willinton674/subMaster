@@ -5,7 +5,6 @@ import android.os.Bundle
 
 import android.widget.Button
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -58,6 +57,7 @@ class Activity_Formulario : AppCompatActivity() {
             // Abre Activity_Estadistica
             val intent = Intent(this@Activity_Formulario, Activity_Estadistica::class.java)
             startActivity(intent)
+        }
 
         boton_aceptar.setOnClickListener(View.OnClickListener {
             val nombre = editnombre.text.toString().trim()
@@ -96,6 +96,4 @@ class Activity_Formulario : AppCompatActivity() {
             false
         }
     }
-
-
 }

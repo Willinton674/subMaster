@@ -33,7 +33,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginBottom="16dp">
-        
+
         <!-- Botón Agregar -->
         <Button
             android:id="@+id/btn_agregar"
