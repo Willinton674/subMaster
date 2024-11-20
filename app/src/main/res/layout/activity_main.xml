@@ -33,16 +33,6 @@
         android:gravity="center"
         android:layout_marginBottom="16dp">
 
-        <!-- Botón Lista -->
-        <Button
-            android:id="@+id/btn_lista"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Listas"
-            android:layout_marginHorizontal="8dp"
-            android:backgroundTint="@color/blue"
-            android:elevation="4dp"
-            android:contentDescription="Abrir listas" />
 
         <!-- Botón Agregar -->
         <Button
