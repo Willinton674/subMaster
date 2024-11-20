@@ -5,7 +5,7 @@ data class Card (
     val fecha_A:String,
     val fecha_C:String,
     val frecuencia:String,
-    val tipoBebito:String,
+    val tipoDebito:String,
     val tipo_ser:String,
     val tarjeta:String
 )
