@@ -2,5 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#3F51B5</color> <!-- Azul -->
+    <color name="colorPrimaryDark">#303F9F</color> <!-- Azul oscuro -->
+    <color name="colorAccent">#FF4081</color> <!-- Rosa para resaltar -->
+    <color name="light_gray">#EE7C7C7E</color>
     <color name="blue">#EE0055FF</color>
 </resources>

@@ -12,6 +12,9 @@
         android:layout_height="match_parent"
         app:lottie_rawRes="@raw/splash"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        app:lottie_loop="true"
+        android:gravity="center"
+        android:background="@color/white"
+        android:contentDescription="Animación de inicio"/>
 
 </LinearLayout>
