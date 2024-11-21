@@ -144,7 +144,7 @@
                         android:id="@+id/radioStandard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Standard" />
+                        android:text="Estandar" />
 
                     <RadioButton
                         android:id="@+id/radioPremium"
@@ -162,7 +162,7 @@
                         android:id="@+id/radioOther"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Other" />
+                        android:text="Otro" />
                 </RadioGroup>
 
                 <!-- Últimos 4 dígitos -->

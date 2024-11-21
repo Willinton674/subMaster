@@ -25,8 +25,8 @@ class Activity_Formulario : AppCompatActivity() {
         val botonCancelar: Button = findViewById(R.id.btnCancelar)
 
         // Opciones para los Spinners
-        val opcionesFrecuencia = listOf("Diario", "Semanal", "Mensual", "Anual")
-        val opcionesTipoDebito = listOf("Crédito", "Débito", "Otro")
+        val opcionesFrecuencia = listOf("Seleciona una Opción","Diario", "Semanal", "Mensual", "Anual")
+        val opcionesTipoDebito = listOf("Seleciona una Opción","Crédito", "Débito", "Otro")
 
         // Configuración de los Spinners
         val adapterFrecuencia = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesFrecuencia)
@@ -40,31 +40,69 @@ class Activity_Formulario : AppCompatActivity() {
         // Configuración del botón "Agregar"
         botonAgregar.setOnClickListener {
             val nombre = editNombre.text.toString().trim()
-            val fechaAdquisicion = obtenerFechaDesdeDatePicker(datePickerAdquisicion)
-            val fechaCobro = obtenerFechaDesdeDatePicker(datePickerCobro)
             val frecuencia = spinnerFrecuencia.selectedItem.toString()
             val tipoDebito = spinnerTipoDebito.selectedItem.toString()
             val tipoServicioId = radioGroupTipoServicio.checkedRadioButtonId
-            val tipoServicio = findViewById<RadioButton>(tipoServicioId).text.toString()
-
             val tarjeta = editTarjeta.text.toString().trim()
 
-            // Validaciones
-            if (nombre.isEmpty() ||
-                tipoServicio.isEmpty() ||
-                tarjeta.length != 4 ||
-                frecuencia.isEmpty() ||
-                tipoDebito.isEmpty() ||
-                !esFechaValida(datePickerAdquisicion) || // Validar si la fecha de adquisición es válida
-                !esFechaValida(datePickerCobro) || //Validar si la fecha de cobro es válida
-                !esTipoServicioValido(tipoServicioId)) { // Validar si el tipo de servicio es válido
-                Toast.makeText(this, "Por favor, completa todos los campos correctamente.", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Servicio agregado con éxito.", Toast.LENGTH_SHORT).show()
-                finish()
+            // Validación de nombre
+            if (nombre.isEmpty()) {
+                Toast.makeText(this, "Por favor, ingresa un nombre válido.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
+            // Obtener las fechas desde los DatePickers
+            val fechaAdquisicionCalendar = Calendar.getInstance().apply {
+                set(datePickerAdquisicion.year, datePickerAdquisicion.month, datePickerAdquisicion.dayOfMonth)
+            }
+
+            val fechaCobroCalendar = Calendar.getInstance().apply {
+                set(datePickerCobro.year, datePickerCobro.month, datePickerCobro.dayOfMonth)
+            }
+
+            // Validación de fechas
+            if (!validarFechas(fechaAdquisicionCalendar,fechaCobroCalendar)) {
+                Toast.makeText(this, "Por favor, selecciona fechas válidas.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Validación de frecuencia
+            if (frecuencia == "Seleciona una Opción") {
+                Toast.makeText(this, "Por favor, selecciona una frecuencia válida.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Validación de tipo de débito
+            if (tipoDebito == "Seleciona una Opción") {
+                Toast.makeText(this, "Por favor, selecciona un tipo de débito válido.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Validación de RadioGroup (Tipo de servicio)
+            if (tipoServicioId == -1) {
+                Toast.makeText(this, "Por favor, selecciona un tipo de servicio.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Validación de tarjeta
+            if (tarjeta.isEmpty() || tarjeta.length != 4) {
+                Toast.makeText(this, "Por favor, ingresa los últimos 4 dígitos de la tarjeta.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Crear un nuevo objeto Service
+            val nuevoServicio = Service(nombre, fechaAdquisicionCalendar.toString(), fechaCobroCalendar.toString(), frecuencia, tipoDebito, tipoServicioId.toString(), tarjeta)
+
+            // Crear un Intent para enviar el nuevo servicio a MainActivity
+            val intent = Intent()
+            intent.putExtra("nuevo_servicio", nuevoServicio)
+            setResult(RESULT_OK, intent)
+
+            // Si todas las validaciones pasan
+            Toast.makeText(this, "Servicio agregado con éxito.", Toast.LENGTH_SHORT).show()
+            finish()
         }
+
 
         // Configuración del botón "Cancelar"
         botonCancelar.setOnClickListener {
@@ -72,24 +110,23 @@ class Activity_Formulario : AppCompatActivity() {
         }
     }
 
-    // Función para obtener una fecha formateada desde un DatePicker
-    private fun obtenerFechaDesdeDatePicker(datePicker: DatePicker): String {
-        val day = datePicker.dayOfMonth
-        val month = datePicker.month + 1 // Los meses son base 0
-        val year = datePicker.year
-        return String.format(Locale.getDefault(), "%02d/%02d/%04d", day, month, year)
-    }
+    fun validarFechas(fechaAdquisicion: Calendar, fechaCobro: Calendar): Boolean {
+        val fechaActual = Calendar.getInstance()
 
-    fun esTipoServicioValido(tipoServicioId: Int): Boolean {
-        return tipoServicioId != -1 // Si no se selecciona ningún RadioButton, el valor será -1
-    }
+        // Verifica que la fecha de cobro sea posterior a la actual
+        if (fechaCobro.before(fechaActual)) {
+            Toast.makeText(this, "La fecha de cobro no puede ser anterior a hoy.", Toast.LENGTH_SHORT).show()
+            return false
+        }
 
-    // Función para validar si la fecha es la predeterminada (por ejemplo, la fecha actual o nula)
-    fun esFechaValida(datePicker: DatePicker): Boolean {
-        val day = datePicker.dayOfMonth
-        val month = datePicker.month + 1 // Los meses son base 0
-        val year = datePicker.year
-        return !(day == 1 && month == 1 && year == Calendar.getInstance().get(Calendar.YEAR)) // Verifica si la fecha no es la predeterminada
+        // Verificar que la fecha de cobro sea posterior a la de adquisición
+        if (fechaCobro.before(fechaAdquisicion)) {
+            Toast.makeText(this, "La fecha de cobro debe ser posterior a la de adquisición.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true // Las fechas son válidas
     }
 
 }
+
